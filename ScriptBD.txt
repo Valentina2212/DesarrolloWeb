@@ -1,0 +1,803 @@
+create table tclientes 
+
+(id_cliente int  not null, 
+
+ nombre_cliente varchar (100) not null, 
+
+ cel_cliente varchar (250) not null, 
+
+ email_cliente varchar (100) not null 
+
+ constraint pk_id_cliente primary key (id_cliente)) 
+
+   
+
+--Creacion de la tabla tproducto con sus respectivos campos y llaves 
+
+ 
+
+create table tproducto 
+
+ (id_producto int not null, 
+
+ nombre_producto varchar (100) not null,   
+
+ precio_producto int  not null, 
+
+ id_categoria_produc int not null, 
+
+ constraint pk_id_producto primary key (id_producto)) 
+
+   
+
+   
+
+ --Creacion de la tabla tcategoria con sus respectivos campos y llaves  
+
+ 
+
+ create table tcategoria  
+
+ ( id_categoria_produc int not null, 
+
+  Nom_categoria varchar (120) not null, 
+
+  id_producto int not null, 
+
+  constraint pk_id_categoria_produc primary key (id_categoria_produc)) 
+
+   
+
+  alter table tcategoria add   
+
+   
+
+  constraint fk_id_producto foreign key (id_producto) references tproducto (id_producto) 
+
+ 
+
+  --Creacion de la tabla tfactura con sus respectivos campos y llaves 
+
+ 
+
+create table tfactura 
+
+ (id_factura int not null, 
+
+ fecha_factura varchar (100) not null, 
+
+ total_factura varchar (100) not null, 
+
+ id_cliente int not null, 
+
+ id_producto int not null 
+
+ constraint pk_id_factura primary key (id_factura) ) 
+
+  
+
+alter table tfactura add  
+
+ 
+
+constraint fk_id_cliente foreign key (id_cliente) references tclientes (id_cliente), 
+
+constraint fk_id_producto1 foreign key (id_producto) references tproducto (id_producto) 
+
+ 
+
+ 
+
+--Creacion de la tabla tproveedores con sus respectivos campos y llaves  
+
+create table tproveedores  
+
+( 
+
+    ID_Proveedor INT not null, 
+
+Nom_Compañia VARCHAR(40) not null, 
+
+Num_Contacto VARCHAR(30) not null, 
+
+Direccion VARCHAR(60) not null, 
+
+Ciudad VARCHAR(15) not null, 
+
+Pais VARCHAR(15) not null, 
+
+ 
+
+ 
+
+CONSTRAINT PK_tPROVEEDORES PRIMARY KEY (ID_Proveedor)) 
+
+ 
+
+ 
+
+--Creacion de la tabla templeados  con sus respectivos campos y llaves 
+
+ 
+
+create table templeados  
+
+( 
+
+    id_empleado INT not null, 
+
+Apellidos VARCHAR(20) not null, 
+
+nombre_empleado  VARCHAR(10) not null, 
+
+Cargo VARCHAR(25) not null, 
+
+Fecha_Contratacion DATETIME not null, 
+
+Direccion_emp VARCHAR(60) not null, 
+
+ 
+
+ 
+
+ 
+
+CONSTRAINT PK_tepleados PRIMARY KEY (id_empleado)) 
+
+    
+
+  
+
+    --Creacion de la tabla tpedido con sus respectivos campos y llaves 
+
+ 
+
+    create table tpedido  
+
+    ( 
+
+        id_pedido int not null,  
+
+        id_empleado int not null,  
+
+        nombre_empleado varchar (100)not null,  
+
+        id_producto int not null,  
+
+        nombre_producto varchar (100)not null,  
+
+    
+
+        CONSTRAINT PK_id_pedido PRIMARY KEY (id_pedido)) 
+
+         
+
+        alter table tpedido add  
+
+ 
+
+        constraint fk_id_empleado foreign key (id_empleado) references templeados (id_empleado), 
+
+        constraint fk_id_producto2 foreign key (id_producto) references tproducto (id_producto) 
+
+ 
+
+         
+
+ 
+
+    --Creacion de la tabla tproveedor con sus respectivos campos y llaves 
+
+ 
+
+    create table tproveedor_tproducto 
+
+    (  
+
+    id_TyT int not null, 
+
+    cantidad_TyT int  not null, 
+
+    ID_proveedor int not null, 
+
+    id_producto int not null, 
+
+ 
+
+    constraint pk_id_TyT primary key (id_TyT)) 
+
+ 
+
+    Alter table tproveedor_tproducto add 
+
+ 
+
+    constraint fk_ID_proveedor foreign key (ID_proveedor) references tproveedores (ID_proveedor), 
+
+        constraint fk_id_producto3 foreign key (id_producto) references tproducto (id_producto) 
+
+         
+
+         
+
+        --se realizaron las inserciones de los campos, tabla tclientes (50) 
+
+ 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (111,'cristian cano ','3214569874','critian@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (121,'jhonatan gutierrez ','321478956','jhpedraza@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (131,'valentina suarez ','3212589632','vquintero@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (141,'angela padilla ','3124526987',' angelasues@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (151,'diego rojas ','3133698564','diegog@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (161,'carlos muñoz ','3145698745',' carrrrlos@yahoo.com ') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (171,'laura reyes ','3156397845','laoreyes@gmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (181,'liseth serrano ','3165847963',' listhhh@gmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (191,'jennifer marin ','31258964789',' jennmarin@gmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1101,'brenda marin ','3179856321','breber@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1111,'jhon melo ','3274569658',' jhonmamelo@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1121,'rafael noguera ','3201456998','rafin@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1131,'maicol sarmiento ','3000123654','msarmieto@gmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1141,'lorena sabogal ','3205698741','loresabo@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1151,'diego guasca ','3214569874','guascad56@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1161,'patricia castañeda','3102365478','ptito69@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1171,'valentina alonso ','3125698741','valentino@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1181,'maricel castiblanco ','3114659874','marii63@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1191,'maria jose ','3104569632','majo69rico@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1201,'camilo jimenez ','3196532145','cjm@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1211,'monica cuevas ','3015647896','montacuevas@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1221,'sneider dueñas ','3025639874','dueñass@gmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1231,'jhonatan vargas ','3004587965','jhonvargas@gmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1241,'jhon peña ','3002569874','peñitaj@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1251,'andres diaz ','3056985214','diaz@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1261,'fabiola castañeda ','3141247856','fabicasta@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1271,'ricardo pres','3102356897','presricardo@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1281,'diana soto ','3114569873','sotodiana@gmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1291,'lina feliciano ','3225689741','felilina@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1301,'andres florez ','3201486597','florezand@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1311,'angelica  mejia','3201256566','Amejia@gmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1321,'andrea prieto ','3104563298','prieandrea@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1331,'gloria aparicio ','3126589714','aparicio65548@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1341,'deyanira guzman ','3002314895','guzmanvito@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1351,'carlos garzon ','3216549871','garzoncar@outlook.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1361,'pamela delgado ','3169845741','delgadito798@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1371,'oscar caro ','3132567849','carocaro@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1381,'juan carreño ','3124569873','juancar741@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1391,'camilo ortiz ','3254569871','camiortiz@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1401,'sebastian gomez ','30021326352','gomezito@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1411,'lina rincon ','3014785963','rinconrincon@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1421,'gerardo infante ','3132569874','infantico@hotmail.com ') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1431,'oscar zuluaga ','3056987632','zuluzulu963258@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1441,'dario perea ','3045123147','dariopera8@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1451,'jose barros ','3236594123','barrosj@yahho.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1461,'lucy gonzales ','3207896532','lucyyyy78@yahho.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1471,'martha salazar ','3156987542','marthasalitas@yahoo.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1481,'valeryn cutiva ','3163149856','cutiva56@hotmail.com') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1491,'arley pastas ','3143167589','particas@yahoo.com ') 
+
+         insert into tclientes ( id_cliente, nombre_cliente, cel_cliente, email_cliente) values (1501,'karen garzon  ','3111458752','karen22@yahoo.com ') 
+
+         
+
+         
+
+         --se realizaron las inserciones de los campos, tabla tproducto (50) 
+
+ 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (101,'hamburguesa', 5000,1001) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (102,'hamburguesa mixta ',8000,1002) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (103,'hamburguesa doble carne ',8000,1003) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (104,'hamburguesa cuarto de libra ',10000,1004) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (105,'hamburguesa mixta',10000,1005) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (106,'empanada de carne ',2000,1006) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (107,'empanada de pollo ',2000,1007) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (108,'empanada mixta ',2000,1008) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (109,'empanada de champiñones ',2500,1009) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1010,'empanada rancheras ',2500,10010) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1011,'arepa rellena de carne ',4500,10011) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1012,'arepa rellena de pollo',4500,10012) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1013,'arepa rellena mixtas ',6000,10013) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1014,'arepa de huevo',2000,10014) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1015,'arepa rellena de champiñones y queso ',6000,10015) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1016,'perro caliente sencillo',4500,10016) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1017,'perro caliente especial ',7000,10017) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1018,'perro caliente super especial ',10000,10018) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1019,'perro caliente americano ',10000,10019) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1020,'perro caliente doble salchicha ',10000,10020) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1021,'pizza hawaiana',4000,10021) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1022,'pizza champiñones',4000,10022) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1023,'pizza carnes ',4000,10023) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1024,'pizza mexicana',4000,10024) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1025,'pizza napolitana',4000,10025) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1026,'pincho de carne ',3000,10026) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1027,'pincho de pollo ',3000,10027) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1028,'pincho de chorizo ',3000,10028) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1029,'pincho pescado ',3000,10029) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1030,'pincho de carne molida ',3000,10030) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1031,'sandwich de pescado ',3500,10031) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1032,'sandwich de carne ',3500,10032) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1033,'sandwich de pollo ',3500,10033) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1034,'sandwich de pavo ',3500,10034) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1035,'sandwich de cubano ',3500,10035) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1036,'salchi papas sencilla',3500,10036) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1037,'salchipapas especial ',3500,10037) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1038,'salchipapas con queso fundido ',3500,10038) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1039,'salchipapas con chorizo ',3500,10039) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1040,'salchipapas vip ',3500,10040) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1041,'patacon con queso bocadillo ',4000,10041) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1042,'patacon con ceviche ',4000,10042) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1043,'patacon con pollo ',4000,10043) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1044,'patacon costeño ',4000,10044) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1045,'gaseosas ',3000,10045) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1046,'batidos ',6000,10046) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1047,'agua ',2000,10047) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1048,'jugos en agua ',4000,10048) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1049,'cervezas ',4000,10049) 
+
+    insert into tproducto (id_producto, nombre_producto, precio_producto, id_categoria_produc) values (1050,'jugos en leche ',4000,10050) 
+
+     
+
+    select * from tproducto 
+
+     
+
+ 
+
+         --se realizaron las inserciones de los campos, tabla tcategoria (50) 
+
+ 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1001,'comida rapida',101) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1002,'comida rapida',102) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1003,'comida rapida',103) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1004,'comida rapida',104) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1005,'comida rapida',105) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1006,'comida rapida',106) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1007,'comida rapida',107) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1008,'comida rapida',108) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (1009,'comida rapida',109) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10010,'comida rapida',1010) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10011,'comida rapida',1011) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10012,'comida rapida',1012) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10013,'comida rapida',1013) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10014,'comida rapida',1014) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10015,'comida rapida',1015) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10016,'comida rapida',1016) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10017,'comida rapida',1017) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10018,'comida rapida',1018) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10019,'comida rapida',1019) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10020,'comida rapida',1020) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10021,'comida rapida',1021) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10022,'comida rapida',1022) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10023,'comida rapida',1023) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10024,'comida rapida',1024) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10025,'comida rapida',1025) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10026,'comida rapida',1026) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10027,'comida rapida',1027) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10028,'comida rapida',1028) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10029,'comida rapida',1029) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10030,'comida rapida',1030) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10031,'comida rapida',1031) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10032,'comida rapida',1032) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10033,'comida rapida',1033) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10034,'comida rapida',1034) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10035,'comida rapida',1035) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10036,'comida rapida',1036) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10037,'comida rapida',1037) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10038,'comida rapida',1038) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10039,'comida rapida',1039) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10040,'comida rapida',1040) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10041,'comida rapida',1041) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10042,'comida rapida',1042) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10043,'comida rapida',1043) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10044,'comida rapida',1044) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10045,'bebida',1045) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10046,'bebida',1046) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10047,'bebida',1047) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10048,'bebida',1048) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10049,'bebida',1049) 
+
+    insert into tcategoria (id_categoria_produc, Nom_categoria, id_producto) values (10050,'bebida',1050) 
+
+ 
+
+    select * from tcategoria 
+
+ 
+
+          --se realizaron las inserciones de los campos, tabla tfactura (50) 
+
+     
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (201,'5/05/2020',5000,111,101) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (202,'5/05/2020',8000,121,102) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (203,'12/05/2020',8000,131,103) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (204,'12/05/2020',10000,141,104) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (205,'12/07/2020',10000,151,105) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (206,'12/07/2020',2000,161,106) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (207,'7/12/2020',2000,171,107) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (208,'7/12/2020',2000,181,108) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (209,'30/08/2020',2500,191,109) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2010,'30/08/2020',2500,1101,1010) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2011,'3/09/2020',4500,1111,1011) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2012,'3/09/2020',4500,1121,1012) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2013,'25/06/2020',6000,1131,1013) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2014,'25/06/2020',2000,1141,1014) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2015,'13/05/2020',6000,1151,1015) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2016,'13/05/2020',4500,1161,1016) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2017,'26/08/2020',7000,1171,1017) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2018,'26/08/2020',10000,1181,1018) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2019,'16/03/2020',10000,1191,1019) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2020,'16/03/2020',10000,1201,1020) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2021,'24/11/2020',4000,1211,1021) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2022,'24/11/2020',4000,1221,1022) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2023,'14/07/2020',4000,1231,1023) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2024,'14/07/2020',4000,1241,1024) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2025,'3/09/2020',4000,1251,1025) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2026,'3/09/2020',3000,1261,1026) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2027,'23/06/2020',3000,1271,1027) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2028,'23/06/2020',3000,1281,1028) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2029,'26/10/2020',3000,1291,1029) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2030,'26/10/2020',3000,1301,1030) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2031,'9/05/2020',3500,1311,1031) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2032,'9/05/2020',3500,1321,1032) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2033,'3/09/2020',3500,1331,1033) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2034,'3/09/2020',3500,1341,1034) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2035,'8/08/2020',3500,1351,1035) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2036,'8/08/2020',3500,1361,1036) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2037,'17/12/2020',3500,1371,1037) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2038,'17/12/2020',3500,1381,1038) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2039,'19/08/2020',3500,1391,1039) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2040,'19/08/2020',3500,1401,1040) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2041,'3/06/2020',4000,1411,1041) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2042,'3/06/2020',4000,1421,1042) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2043,'16/02/2020',4000,1431,1043) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2044,'16/02/2020',4000,1441,1044) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2045,'13/09/2020',4000,1451,1045) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2046,'13/09/2020',3000,1461,1046) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2047,'6/09/2020',6000,1471,1047) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2048,'6/09/2020',2000,1481,1048) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2049,'7/09/2020',4000,1491,1049) 
+
+    insert into tfactura (id_factura, fecha_factura, total_factura, id_cliente, id_producto) values (2050,'7/09/2020',4000,1501,1050) 
+
+ 
+
+     
+
+ 
+
+          --se realizaron las inserciones de los campos, tabla tproveedores (4) 
+
+ 
+
+     insert into tproveedores (ID_Proveedor, Nom_Compañia, Num_Contacto, Direccion, Ciudad, Pais) values (3001,'Grupoal','4448502-3163213206.','Cr 47G # 78D sur 18.','Medellin','Colombia') 
+
+     insert into tproveedores (ID_Proveedor, Nom_Compañia, Num_Contacto, Direccion, Ciudad, Pais) values (3002,'Repan','4824677-3112752148','Cr 65 B # 17-50','Bogota','Colombia') 
+
+     insert into tproveedores (ID_Proveedor, Nom_Compañia, Num_Contacto, Direccion, Ciudad, Pais) values (3003,'La florida','4878888.','Cr 9 Norte #52N – 130.','Cali','Colombia') 
+
+     insert into tproveedores (ID_Proveedor, Nom_Compañia, Num_Contacto, Direccion, Ciudad, Pais) values (3004,'Santarrosanos','2310389- 3206651811','Cr 69p # 69 – 98.','Bogota','Colombia') 
+
+ 
+
+      
+
+ 
+
+         --se realizaron las inserciones de los campos, tabla templeados (10) 
+
+ 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9001,'ACIEN ZURUTA',' ROSA ','caja','15/2/2020','Calle 7 # 19-35') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9002,'CORREA CASADO',' MATIAS  ','mesero','05/2/2020','Calle 25 # 6-08') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9003,'GALVEZ IBARRA',' ALICIA ','mesera','09/2/2020','Calle 16 # 3-28') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9004,'GODOY GARCIA',' JOSE ','aseo','11/2/2020','Avenida 1 # 28-57 ') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9005,'PINO ORTEGA',' DOMINGO  ','aseo','15/2/2020','Carrera 11 # 41-13') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9006,'TORTOSA MARTINEZ',' ALVARO ','caja','05/2/2020','Carrera 21 # 17 -63') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9007,'SOLA FLORES',' MONICA ','cocina','11/2/2020','Calle 53 # 25A-35') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9008,'LOPEZ ORTIZ',' ISABEL ','cocina','15/2/2020','Calle 28 # 2-27') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9009,'RODRIGUEZ AGUILERA ',' JUAN ','bodega','05/2/2020','Calle 5 # 4-48') 
+
+     insert into templeados (id_empleado, Apellidos, nombre_empleado, Cargo, Fecha_Contratacion, Direccion_emp) values (9010,'PEREZ GOMEZ',' ELISA ','bodega','15/2/2020','Calle 17 # 29-70 ') 
+
+ 
+
+     
+
+ 
+
+       --se realizaron las inserciones de los campos, tabla tpedido  (30) 
+
+ 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (601,9003,'ALICIA',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (602,9003,'ALICIA',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (603,9002,'MATIAS',108,'empanada mista') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (604,9002,'MATIAS',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (605,9002,'MATIAS',107,'empanada de pollo') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (606,9003,'ALICIA',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (607,9003,'ALICIA',105,'hamburguesa mixta') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (608,9002,'MATIAS',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (609,9003,'ALICIA',1021,'pizza hawaiana') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (610,9003,'ALICIA',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (611,9003,'ALICIA',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (612,9002,'MATIAS',1011,'arepa rellena de carne') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (613,9003,'ALICIA',105,'hamburguesa mixta') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (614,9002,'MATIAS',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (615,9003,'ALICIA',1010,'empanada ranchera') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (616,9002,'MATIAS',1031,'sandwich de pescado') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (617,9002,'MATIAS',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (618,9003,'ALICIA',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (619,9003,'ALICIA',1040,'salchipapas vip') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (620,9002,'MATIAS',1022,'pizza de champiñones') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (621,9002,'MATIAS',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (622,9002,'MATIAS',1019,'perro caliente americano') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (623,9003,'ALICIA',1024,'pizza mexicana') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (624,9002,'MATIAS',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (625,9003,'ALICIA',1026,'pincho de carne') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (626,9003,'ALICIA',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (627,9003,'ALICIA',1024,'pizza mexicana') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (628,9002,'MATIAS',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (629,9002,'MATIAS',101,'hamburguesa') 
+
+     insert into tpedido (id_pedido, id_empleado, nombre_empleado, id_producto, nombre_producto) values (630,9003,'MATIAS',101,'hamburguesa') 
+
+ 
+
+     
+
+ 
+
+         
+
+          --se realizaron las inserciones de los campos, tabla tproveedor_tproducto 
+
+ 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (701,30,3001,106) 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (702,30,3001,107) 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (703,30,3001,108) 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (704,30,3001,109) 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (705,20,3003,1014) 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (706,20,3003,1015) 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (707,30,3002,1031) 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (708,30,3002,1034) 
+
+     insert into tproveedor_tproducto (id_TyT, cantidad_TyT, ID_proveedor, id_producto) values (709,30,3002,1035) 
